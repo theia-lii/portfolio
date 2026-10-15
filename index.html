@@ -1,0 +1,1269 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Hao Li | AI & Multimodal Learning Portfolio</title>
+  <meta name="description" content="Portfolio of Hao Li, an MSc Computer Science student focused on AI, multimodal learning, graph neural networks, and industrial vision systems." />
+  <style>
+    :root {
+      color-scheme: light;
+      --ink: #15201e;
+      --muted: #5b6864;
+      --line: #d8ded8;
+      --paper: #f7f5ee;
+      --panel: #fffdfa;
+      --field: #e7efe9;
+      --accent: #ca5d2a;
+      --accent-2: #19726d;
+      --accent-3: #8f7a3a;
+      --shadow: 0 18px 48px rgba(34, 42, 38, 0.12);
+      --max: 1180px;
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      margin: 0;
+      font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      background: var(--paper);
+      color: var(--ink);
+      line-height: 1.55;
+    }
+
+    img {
+      max-width: 100%;
+      display: block;
+    }
+
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
+
+    .site-nav {
+      position: sticky;
+      top: 0;
+      z-index: 20;
+      display: flex;
+      justify-content: center;
+      border-bottom: 1px solid rgba(21, 32, 30, 0.1);
+      background: rgba(247, 245, 238, 0.86);
+      backdrop-filter: blur(18px);
+    }
+
+    .nav-inner {
+      width: min(var(--max), calc(100% - 36px));
+      min-height: 68px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 24px;
+    }
+
+    .brand {
+      font-weight: 780;
+      letter-spacing: 0;
+    }
+
+    .nav-links {
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      flex-wrap: wrap;
+      justify-content: flex-end;
+    }
+
+    .nav-links a {
+      min-height: 36px;
+      display: inline-flex;
+      align-items: center;
+      padding: 0 12px;
+      border-radius: 6px;
+      color: var(--muted);
+      font-size: 0.92rem;
+      font-weight: 650;
+    }
+
+    .nav-links a:hover {
+      color: var(--ink);
+      background: rgba(21, 32, 30, 0.06);
+    }
+
+    .hero {
+      min-height: calc(100vh - 68px);
+      display: grid;
+      align-items: end;
+      position: relative;
+      isolation: isolate;
+      overflow: hidden;
+      background:
+        linear-gradient(90deg, rgba(12, 18, 16, 0.86) 0%, rgba(12, 18, 16, 0.68) 42%, rgba(12, 18, 16, 0.22) 100%),
+        url("assets/industrial-monitoring.png") center / cover no-repeat;
+    }
+
+    .hero::after {
+      content: "";
+      position: absolute;
+      inset: auto 0 0;
+      height: 34%;
+      background: linear-gradient(0deg, var(--paper), rgba(247, 245, 238, 0));
+      z-index: -1;
+    }
+
+    .hero-inner {
+      width: min(var(--max), calc(100% - 36px));
+      margin: 0 auto;
+      padding: 90px 0 118px;
+      color: #fffdfa;
+    }
+
+    .eyebrow {
+      display: inline-flex;
+      align-items: center;
+      min-height: 30px;
+      padding: 0 10px;
+      border: 1px solid rgba(255, 253, 250, 0.34);
+      border-radius: 999px;
+      color: rgba(255, 253, 250, 0.82);
+      font-size: 0.78rem;
+      font-weight: 760;
+      text-transform: uppercase;
+    }
+
+    h1,
+    h2,
+    h3,
+    p {
+      margin-top: 0;
+    }
+
+    h1 {
+      max-width: 840px;
+      margin: 22px 0 24px;
+      font-size: clamp(3.2rem, 8vw, 7.7rem);
+      line-height: 0.92;
+      letter-spacing: 0;
+    }
+
+    .hero-copy {
+      max-width: 730px;
+      margin-bottom: 30px;
+      color: rgba(255, 253, 250, 0.86);
+      font-size: clamp(1.06rem, 2vw, 1.28rem);
+    }
+
+    .actions,
+    .button-row {
+      display: flex;
+      gap: 12px;
+      flex-wrap: wrap;
+      align-items: center;
+    }
+
+    .btn {
+      min-height: 46px;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      border-radius: 6px;
+      padding: 0 18px;
+      border: 1px solid transparent;
+      font-weight: 760;
+      background: var(--accent);
+      color: #fffdfa;
+      box-shadow: 0 12px 28px rgba(202, 93, 42, 0.24);
+    }
+
+    .btn.secondary {
+      background: rgba(255, 253, 250, 0.08);
+      border-color: rgba(255, 253, 250, 0.38);
+      color: #fffdfa;
+      box-shadow: none;
+    }
+
+    .btn.ghost {
+      background: transparent;
+      border-color: rgba(21, 32, 30, 0.18);
+      color: var(--ink);
+      box-shadow: none;
+    }
+
+    .section {
+      padding: 88px 0;
+    }
+
+    .section.alt {
+      background: var(--panel);
+      border-top: 1px solid var(--line);
+      border-bottom: 1px solid var(--line);
+    }
+
+    .wrap {
+      width: min(var(--max), calc(100% - 36px));
+      margin: 0 auto;
+    }
+
+    .section-head {
+      display: grid;
+      grid-template-columns: minmax(0, 0.76fr) minmax(280px, 0.46fr);
+      gap: 48px;
+      align-items: end;
+      margin-bottom: 36px;
+    }
+
+    h2 {
+      margin-bottom: 0;
+      font-size: clamp(2rem, 4vw, 4rem);
+      line-height: 1;
+      letter-spacing: 0;
+    }
+
+    .section-head p {
+      margin-bottom: 0;
+      color: var(--muted);
+      font-size: 1rem;
+    }
+
+    .proof-strip {
+      transform: translateY(-44px);
+      position: relative;
+      z-index: 4;
+    }
+
+    .proof-grid {
+      display: grid;
+      grid-template-columns: repeat(4, minmax(0, 1fr));
+      gap: 1px;
+      overflow: hidden;
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      background: var(--line);
+      box-shadow: var(--shadow);
+    }
+
+    .proof {
+      min-height: 136px;
+      padding: 22px;
+      background: var(--panel);
+    }
+
+    .proof strong {
+      display: block;
+      margin-bottom: 8px;
+      color: var(--accent-2);
+      font-size: 1.55rem;
+      line-height: 1;
+    }
+
+    .proof span {
+      color: var(--muted);
+      font-size: 0.92rem;
+    }
+
+    .feature-project {
+      display: grid;
+      grid-template-columns: minmax(0, 0.9fr) minmax(360px, 0.7fr);
+      gap: 42px;
+      align-items: center;
+    }
+
+    .project-copy p {
+      color: var(--muted);
+    }
+
+    .tag-list {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin: 24px 0;
+    }
+
+    .tag {
+      min-height: 30px;
+      display: inline-flex;
+      align-items: center;
+      padding: 0 10px;
+      border-radius: 999px;
+      border: 1px solid rgba(25, 114, 109, 0.24);
+      color: var(--accent-2);
+      background: rgba(25, 114, 109, 0.07);
+      font-size: 0.82rem;
+      font-weight: 740;
+    }
+
+    .media-stack {
+      display: grid;
+      gap: 14px;
+    }
+
+    .media-large,
+    .media-small {
+      overflow: hidden;
+      border-radius: 8px;
+      border: 1px solid var(--line);
+      background: #ece9df;
+    }
+
+    .media-large {
+      aspect-ratio: 1.18;
+    }
+
+    .media-large img,
+    .media-small img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+
+    .media-pair {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 14px;
+    }
+
+    .media-small {
+      aspect-ratio: 1.45;
+    }
+
+    .timeline {
+      display: grid;
+      gap: 18px;
+    }
+
+    .entry {
+      display: grid;
+      grid-template-columns: 210px minmax(0, 1fr);
+      gap: 28px;
+      padding: 28px 0;
+      border-top: 1px solid var(--line);
+    }
+
+    .entry:last-child {
+      border-bottom: 1px solid var(--line);
+    }
+
+    .entry time,
+    .entry .role {
+      color: var(--muted);
+      font-size: 0.95rem;
+      font-weight: 680;
+    }
+
+    .entry h3 {
+      margin-bottom: 8px;
+      font-size: 1.28rem;
+      line-height: 1.25;
+    }
+
+    .entry p {
+      margin-bottom: 0;
+      color: var(--muted);
+    }
+
+    .publication { padding: 26px 0; border-block: 1px solid var(--line); }
+    .publication h3 { max-width: 960px; font-size: 24px; line-height: 1.35; margin-bottom: 16px; }
+    .publication h3 a:hover { text-decoration: underline; text-underline-offset: 4px; }
+    .publication p { color: var(--muted); overflow-wrap: anywhere; }
+    .publication .publication-venue { color: var(--accent-2); font-weight: 800; }
+    .publication strong { color: var(--ink); }
+    .publication-links { display: flex; flex-wrap: wrap; gap: 24px; }
+    .publication-links a { color: var(--accent-2); font-weight: 750; text-decoration: underline; text-underline-offset: 4px; padding: 8px 0; }
+
+    .project-grid {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 18px;
+    }
+
+    .project-card {
+      min-height: 360px;
+      display: flex;
+      flex-direction: column;
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      overflow: hidden;
+      background: var(--panel);
+      cursor: pointer;
+      transition: transform 180ms ease, box-shadow 180ms ease, border-color 180ms ease;
+    }
+
+    .project-card:hover,
+    .project-card:focus-visible {
+      transform: translateY(-4px);
+      border-color: rgba(25, 114, 109, 0.34);
+      box-shadow: var(--shadow);
+      outline: none;
+    }
+
+    .project-card img {
+      width: 100%;
+      height: 164px;
+      object-fit: cover;
+      background: var(--field);
+      border-bottom: 1px solid var(--line);
+    }
+
+    .project-card .card-body {
+      padding: 22px;
+      display: flex;
+      flex: 1;
+      flex-direction: column;
+    }
+
+    .project-card h3 {
+      margin-bottom: 10px;
+      font-size: 1.1rem;
+      line-height: 1.25;
+    }
+
+    .project-card p {
+      color: var(--muted);
+      margin-bottom: 18px;
+    }
+
+    .card-meta {
+      margin-top: auto;
+      color: var(--accent-2);
+      font-size: 0.86rem;
+      font-weight: 760;
+    }
+
+    .card-action {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      min-height: 38px;
+      margin-top: 16px;
+      padding: 0 12px;
+      border-radius: 6px;
+      border: 1px solid rgba(21, 32, 30, 0.18);
+      color: var(--ink);
+      background: rgba(255, 253, 250, 0.7);
+      font-size: 0.84rem;
+      font-weight: 820;
+    }
+
+    .metric-row {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 10px;
+      margin: 4px 0 18px;
+    }
+
+    .metric {
+      min-height: 58px;
+      padding: 10px 12px;
+      border: 1px solid rgba(25, 114, 109, 0.18);
+      border-radius: 6px;
+      background: rgba(25, 114, 109, 0.06);
+    }
+
+    .metric strong {
+      display: block;
+      color: var(--accent-2);
+      line-height: 1.1;
+    }
+
+    .metric span {
+      color: var(--muted);
+      font-size: 0.78rem;
+      font-weight: 700;
+    }
+
+    .skills {
+      display: grid;
+      grid-template-columns: repeat(4, minmax(0, 1fr));
+      gap: 1px;
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      overflow: hidden;
+      background: var(--line);
+    }
+
+    .skill {
+      min-height: 180px;
+      padding: 24px;
+      background: var(--panel);
+    }
+
+    .skill h3 {
+      margin-bottom: 12px;
+      color: var(--accent);
+    }
+
+    .skill p {
+      margin-bottom: 0;
+      color: var(--muted);
+      font-size: 0.96rem;
+    }
+
+    .project-modal {
+      position: fixed;
+      inset: 0;
+      z-index: 60;
+      display: none;
+      align-items: center;
+      justify-content: center;
+      padding: 28px;
+      background: rgba(12, 18, 16, 0.68);
+      backdrop-filter: blur(10px);
+    }
+
+    .project-modal.open {
+      display: flex;
+    }
+
+    body.modal-open {
+      overflow: hidden;
+    }
+
+    .modal-panel {
+      width: min(1120px, 100%);
+      max-height: min(780px, calc(100vh - 56px));
+      display: grid;
+      grid-template-columns: minmax(320px, 0.74fr) minmax(360px, 0.86fr);
+      overflow-y: auto;
+      overscroll-behavior: contain;
+      border-radius: 8px;
+      border: 1px solid rgba(255, 253, 250, 0.24);
+      background: var(--panel);
+      box-shadow: 0 28px 90px rgba(0, 0, 0, 0.34);
+    }
+
+    .modal-media {
+      min-height: 520px;
+      background: var(--field);
+      border-right: 1px solid var(--line);
+    }
+
+    .modal-media img {
+      width: 100%;
+      height: 100%;
+      object-fit: contain;
+      padding: 18px;
+    }
+
+    .modal-content {
+      position: relative;
+      min-height: 0;
+      padding: 38px;
+    }
+
+    .modal-close {
+      position: absolute;
+      top: 18px;
+      right: 18px;
+      width: 38px;
+      height: 38px;
+      border: 1px solid var(--line);
+      border-radius: 999px;
+      background: var(--panel);
+      color: var(--ink);
+      cursor: pointer;
+      font-size: 1.4rem;
+      line-height: 1;
+    }
+
+    .modal-kicker {
+      display: inline-flex;
+      min-height: 28px;
+      align-items: center;
+      padding: 0 10px;
+      border-radius: 999px;
+      background: rgba(202, 93, 42, 0.1);
+      color: var(--accent);
+      font-size: 0.78rem;
+      font-weight: 820;
+      text-transform: uppercase;
+    }
+
+    .modal-content h2 {
+      margin: 18px 44px 16px 0;
+      font-size: clamp(1.9rem, 4vw, 3.2rem);
+      line-height: 1;
+    }
+
+    .modal-summary {
+      color: var(--muted);
+      font-size: 1.03rem;
+    }
+
+    .modal-block {
+      margin-top: 28px;
+      padding-top: 24px;
+      border-top: 1px solid var(--line);
+    }
+
+    .modal-block h3 {
+      margin-bottom: 12px;
+      font-size: 1rem;
+      color: var(--accent-2);
+    }
+
+    .modal-block ul {
+      margin: 0;
+      padding-left: 20px;
+      color: var(--muted);
+    }
+
+    .modal-block li + li {
+      margin-top: 8px;
+    }
+
+    .modal-results {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 10px;
+    }
+
+    .modal-panel.case-study { display: block; position: relative; }
+    .case-study > .modal-media, .case-study > .modal-content { display: none; }
+    .case-study-body { padding: 32px; }
+    .case-study-body h2 { margin: 16px 0 20px; font-size: 32px; line-height: 1.2; }
+    .case-study-body h3 { font-size: 22px; margin-bottom: 14px; }
+    .case-study-body p, .case-study-body li { color: var(--muted); }
+    .case-study-body section { padding: 26px 0; border-bottom: 1px solid var(--line); }
+    .case-study-body .case-gallery { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 24px; }
+    .case-study-body figure { margin: 0; min-width: 0; }
+    .case-study-body figure img { width: 100%; height: 260px; object-fit: contain; background: #edf1ef; border-radius: 6px; }
+    .case-study-body figcaption { font-size: 14px; color: var(--muted); margin-top: 10px; }
+    .case-study-body .case-actions { position: sticky; top: 0; z-index: 2; display: flex; justify-content: flex-end; padding: 8px 0; background: var(--panel); }
+    .case-actions button { font: inherit; cursor: pointer; }
+    @media (max-width: 760px) {
+      .case-study-body { padding: 18px; }
+      .case-study-body h2 { font-size: 26px; }
+      .case-study-body .case-gallery { grid-template-columns: 1fr; }
+      .case-study-body figure img { height: auto; max-height: 320px; }
+    }
+
+    .contact {
+      display: grid;
+      grid-template-columns: minmax(0, 0.72fr) minmax(280px, 0.42fr);
+      gap: 52px;
+      align-items: center;
+    }
+
+    .contact h2 {
+      margin-bottom: 18px;
+    }
+
+    .contact p {
+      max-width: 720px;
+      color: var(--muted);
+      font-size: 1.08rem;
+    }
+
+    .contact-list {
+      display: grid;
+      gap: 12px;
+      padding: 24px;
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      background: var(--panel);
+    }
+
+    .contact-list a {
+      min-height: 42px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 16px;
+      border-bottom: 1px solid var(--line);
+      color: var(--ink);
+      font-weight: 720;
+    }
+
+    .contact-list a:last-child {
+      border-bottom: 0;
+    }
+
+    footer {
+      padding: 30px 0;
+      color: var(--muted);
+      border-top: 1px solid var(--line);
+      background: var(--panel);
+      font-size: 0.9rem;
+    }
+
+    .reveal {
+      opacity: 0;
+      transform: translateY(18px);
+      transition: opacity 700ms ease, transform 700ms ease;
+    }
+
+    .reveal.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    @media (max-width: 900px) {
+      .nav-inner {
+        min-height: 62px;
+      }
+
+      .nav-links {
+        gap: 0;
+      }
+
+      .nav-links a {
+        padding: 0 8px;
+      }
+
+      .hero {
+        min-height: 760px;
+        background-position: 58% center;
+      }
+
+      .hero-inner {
+        padding-bottom: 96px;
+      }
+
+      .proof-grid,
+      .project-grid,
+      .skills {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+      }
+
+      .section-head,
+      .feature-project,
+      .contact {
+        grid-template-columns: 1fr;
+      }
+
+      .feature-project {
+        gap: 28px;
+      }
+    }
+
+    @media (max-width: 640px) {
+      .nav-inner {
+        align-items: flex-start;
+        flex-direction: column;
+        padding: 14px 0;
+        gap: 10px;
+      }
+
+      .nav-links {
+        justify-content: flex-start;
+      }
+
+      .hero {
+        min-height: 680px;
+      }
+
+      .hero-inner {
+        padding-top: 70px;
+      }
+
+      .section {
+        padding: 64px 0;
+      }
+
+      .proof-strip {
+        transform: translateY(-28px);
+      }
+
+      .proof-grid,
+      .project-grid,
+      .skills,
+      .media-pair {
+        grid-template-columns: 1fr;
+      }
+
+      .entry {
+        grid-template-columns: 1fr;
+        gap: 10px;
+      }
+
+      .project-card {
+        min-height: 0;
+      }
+
+      .project-modal {
+        padding: 14px;
+        align-items: flex-end;
+      }
+
+      .modal-panel {
+        max-height: calc(100vh - 28px);
+        grid-template-columns: 1fr;
+      }
+
+      .modal-media {
+        min-height: 220px;
+        max-height: 260px;
+        border-right: 0;
+        border-bottom: 1px solid var(--line);
+      }
+
+      .modal-content {
+        padding: 28px 22px;
+      }
+
+      .modal-results {
+        grid-template-columns: 1fr;
+      }
+
+      .contact-list {
+        padding: 18px;
+      }
+    }
+  </style>
+  <link rel="stylesheet" href="personal.css">
+  <script src="personal.js" defer></script>
+</head>
+<body>
+  <nav class="site-nav" aria-label="Primary navigation">
+    <div class="nav-inner">
+      <a class="brand" href="#top">hao li<span class="brand-dot">.</span></a>
+      <div class="nav-links">
+        <a href="#research">Projects</a>
+        <a href="#experience">Experience</a>
+        <a href="#publications">Publications</a>
+        <a href="#beyond">Beyond work</a>
+        <a href="#contact">Contact</a>
+      </div>
+    </div>
+  </nav>
+
+  <header class="hero" id="top">
+    <div class="hero-inner">
+      <h1>Hao Li<span class="name-period">.</span></h1>
+      <p class="hero-copy">Computer science at Edinburgh.<br>Exploring AI, collecting moments,<br>and finding words along the way.</p>
+      <div class="actions">
+        <a class="btn" href="assets/Hao-Li-CV.pdf" target="_blank" rel="noopener">View CV</a>
+        <a class="btn secondary" href="#research">Explore projects</a>
+      </div>
+      <div class="hero-snapshot">
+        <img src="assets/personal/portrait-sea.jpg" alt="Hao Li beside the water under a cloudy sky">
+        <span>a little hello by the water.</span>
+      </div>
+      <span class="hero-handnote">nice to meet you!</span>
+      <a class="hero-scroll" href="#skills">A little of what I work with &darr;</a>
+    </div>
+  </header>
+
+  <main>
+    <section class="section alt" id="skills" aria-labelledby="skills-title">
+      <div class="wrap">
+        <div class="section-head reveal">
+          <div><span class="section-index">01 / tools &amp; methods</span><h2 id="skills-title">Skills<span class="red-period">.</span></h2></div>
+        </div>
+        <div class="skill-types">
+          <div class="skill-type reveal">
+            <h3>Programming</h3>
+            <p>Python, C, C++, Java, HTML, algorithm implementation, experiment pipelines.</p>
+          </div>
+          <div class="skill-type reveal">
+            <h3>Machine Learning</h3>
+            <p>Graph neural networks, multimodal learning, training and evaluation workflows.</p>
+          </div>
+          <div class="skill-type reveal">
+            <h3>Vision Systems</h3>
+            <p>Image processing, digital image correlation, deformation analysis, CAD-adjacent workflows.</p>
+          </div>
+          <div class="skill-type reveal">
+            <h3>Languages</h3>
+            <p>Mandarin Chinese (Native)<br>English (IELTS 7)<br>Korean</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section alt" id="research">
+      <div class="wrap">
+        <div class="section-head reveal">
+          <h2>Projects</h2>
+          <p>Selected work in multimodal learning, industrial computer vision, and 3D reconstruction.</p>
+        </div>
+
+        <div class="project-grid">
+          <article class="project-card reveal" role="button" tabindex="0" data-project="industrial">
+            <img src="assets/industrial-monitoring.png" alt="Industrial monitoring prototype on site" />
+            <div class="card-body">
+              <h3>Non-contact Deformation Monitoring</h3>
+              <p>Analysed industrial field imagery through image registration, local DIC, and strain visualisation to investigate deformation monitoring.</p>
+              <div class="card-meta">Team Leader, registered monitoring software</div>
+              <span class="card-action">Open project results</span>
+            </div>
+          </article>
+
+          <article class="project-card reveal" role="button" tabindex="0" data-project="thesis">
+            <img src="assets/thesis/image9.jpeg" alt="PandaSet reference images and Gaussian splatting reconstruction comparisons" />
+            <div class="card-body">
+              <h3>LiDAR-constrained 3D Gaussian Splatting</h3>
+              <p>Combined LiDAR geometry and multi-view images for 3D reconstruction, with geometric anchoring and ROI supervision for industrial scenes.</p>
+              <div class="metric-row" aria-label="Thesis results on two different datasets">
+                <div class="metric"><strong>25.296 dB</strong><span>PandaSet test PSNR</span></div>
+                <div class="metric"><strong>16.45 dB</strong><span>DJI test masked PSNR</span></div>
+              </div>
+              <div class="card-meta">Undergraduate Thesis, 2026</div>
+              <span class="card-action">Open project results</span>
+            </div>
+          </article>
+          <article class="project-card reveal" role="button" tabindex="0" data-project="multimodal">
+            <img src="assets/multimodal-gnn.svg" alt="Architecture diagram for a multimodal graph neural network sentiment pipeline" />
+            <div class="card-body">
+              <h3>Multimodal Sentiment Analysis with Graph Neural Networks</h3>
+              <p>Built a research prototype for image-text sentiment analysis using text graph encoders, image graph convolution, and cross-modal co-attention fusion.</p>
+              <div class="metric-row" aria-label="Benchmark results">
+                <div class="metric"><strong>0.6610</strong><span>TumEmo Acc</span></div>
+                <div class="metric"><strong>0.7181</strong><span>MVSA-M Acc</span></div>
+              </div>
+              <div class="card-meta">Project Lead, NUS Summer Research Programme</div>
+              <span class="card-action">Open project results</span>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="experience">
+      <div class="wrap">
+        <div class="section-head reveal">
+          <h2>Experience</h2>
+          <p>Research and industry work spanning multimodal algorithms, engineering AI, and computer vision.</p>
+        </div>
+
+        <div class="timeline">
+          <article class="entry reveal">
+            <div>
+              <time>Jan 2025 - May 2025</time>
+              <div class="role">Multimodal Algorithm Intern</div>
+            </div>
+            <div>
+              <h3>360 Digital Security Group</h3>
+              <p>Designed and supported image-text multimodal algorithm solutions, including cross-modal feature interaction, representation modelling, inference, evaluation, and demo development.</p>
+            </div>
+          </article>
+
+          <article class="entry reveal">
+            <div>
+              <time>Jul 2024 - Nov 2024</time>
+              <div class="role">AI Intern, Digital Management Center</div>
+            </div>
+            <div>
+              <h3>State Nuclear Electric Power Planning Design & Research Institute</h3>
+              <p>Contributed to an enterprise survey and design LLM using open-source frameworks, engineering standards, and knowledge bases for automated engineering design review.</p>
+            </div>
+          </article>
+
+          <article class="entry reveal">
+            <div>
+              <time>Jul 2025 - Aug 2025</time>
+              <div class="role">Engineering Algorithm Intern</div>
+            </div>
+            <div>
+              <h3>Beijing Huayun Zhichuang Technology Co., Ltd.</h3>
+              <p>Developed CAD functional modules using image processing and computer vision for engineering data analysis, and extended DIC-based deformation analysis into CAD application scenarios.</p>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="publications">
+      <div class="wrap">
+        <div class="section-head reveal">
+          <h2>Publications</h2>
+          <p>Published research in graph learning and physics-informed modelling.</p>
+        </div>
+        <article class="publication reveal">
+          <p class="publication-venue">AAAI 2025</p>
+          <h3><a href="https://ojs.aaai.org/index.php/AAAI/article/view/33372" target="_blank" rel="noopener noreferrer">Pioneer: Physics-informed Riemannian Graph ODE for Entropy-increasing Dynamics</a></h3>
+          <p>Li Sun, Ziheng Zhang, Zixi Wang, Yujie Wang, Qiqi Wan, <strong>Hao Li</strong>, Hao Peng, Philip S. Yu</p>
+          <p>Proceedings of the AAAI Conference on Artificial Intelligence, 39(12), 12586&ndash;12594, 2025.</p>
+          <p><strong>My contribution:</strong> core model implementation and debugging, experimental support, and manuscript writing and revisions.</p>
+          <div class="publication-links"><a href="https://ojs.aaai.org/index.php/AAAI/article/view/33372" target="_blank" rel="noopener noreferrer">Paper</a><a href="https://ojs.aaai.org/index.php/AAAI/article/download/33372/35527" target="_blank" rel="noopener noreferrer">PDF</a><a href="https://doi.org/10.1609/aaai.v39i12.33372" target="_blank" rel="noopener noreferrer">DOI</a></div>
+        </article>
+      </div>
+    </section>
+
+    <section class="section" id="beyond">
+      <div class="wrap">
+        <div class="section-head reveal">
+          <div><span class="section-index">05 / off the screen</span><h2>Beyond work<span class="red-period">.</span></h2></div>
+          <p>I like travelling and writing.<br>A few moments from the other side of my camera.</p>
+        </div>
+        <div class="photo-album">
+          <button class="album-photo photo-portrait" type="button" data-photo="0" aria-label="View portrait in Guilin"><img loading="lazy" src="assets/personal/portrait-rain.jpg" alt="Portrait under an umbrella beside a mountain river in Guilin"><span>a rainy afternoon in Guilin.</span></button>
+          <button class="album-photo photo-mountain" type="button" data-photo="1" aria-label="View the Taihang Mountains"><img loading="lazy" src="assets/personal/mountains.jpg" alt="Sunlit cliffs in the Taihang Mountains"><span>a long view of the Taihang Mountains.</span></button>
+          <button class="album-photo photo-coast" type="button" data-photo="2" aria-label="View the coast in Sanya"><img loading="lazy" src="assets/personal/coast.jpg" alt="Blue sea beside a coastal walkway in Sanya"><span>a little sea breeze in Sanya.</span></button>
+          <button class="album-photo photo-fireworks" type="button" data-photo="3" aria-label="View fireworks in 2026"><img loading="lazy" src="assets/personal/fireworks.jpg" alt="Colourful fireworks behind trees in 2026"><span>a sky full of colour, 2026.</span></button>
+          <button class="album-photo photo-campus" type="button" data-photo="4" aria-label="View NUS campus photograph"><img loading="lazy" src="assets/personal/nus.jpg" alt="Hao Li beside a commencement backdrop on the NUS campus"><span>a little time on the NUS campus.</span></button>
+          <button class="album-photo photo-winter" type="button" data-photo="5" aria-label="View the Summer Palace in winter"><img loading="lazy" src="assets/personal/winter.jpg" alt="A quiet lake and snow-covered buildings at the Summer Palace"><span>a quiet winter evening at the Summer Palace.</span></button>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="contact">
+      <div class="wrap contact">
+        <div class="reveal">
+          <h2>Let's keep in touch<span class="red-period">.</span></h2>
+          <p>I am especially interested in roles involving multimodal learning, NLP, graph machine learning, computer vision, and AI systems for engineering domains.</p>
+        </div>
+        <div class="contact-list reveal" aria-label="Contact links">
+          <a href="mailto:thealigrad@gmail.com"><span>Email</span><span>thealigrad@gmail.com</span></a>
+          <a href="https://www.linkedin.com/in/hao-li-500187435/" target="_blank" rel="noopener noreferrer"><span>LinkedIn</span><span>Hao Li</span></a>
+          <a href="tel:+447942801680"><span>Phone</span><span>+44 7942 801680</span></a>
+          <a href="assets/Hao-Li-CV.pdf" target="_blank" rel="noopener"><span>CV</span><span>PDF</span></a>
+          <a href="https://www.ed.ac.uk/" target="_blank" rel="noopener"><span>Location</span><span>Edinburgh, UK</span></a>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <div class="project-modal" id="project-modal" aria-hidden="true">
+    <div class="modal-panel" role="dialog" aria-modal="true" aria-labelledby="modal-title">
+      <div class="modal-media">
+        <img id="modal-image" src="assets/multimodal-gnn.svg" alt="" />
+      </div>
+      <div class="modal-content">
+        <button class="modal-close" type="button" aria-label="Close project details">&times;</button>
+        <span class="modal-kicker" id="modal-kicker">Project results</span>
+        <h2 id="modal-title"></h2>
+        <p class="modal-summary" id="modal-summary"></p>
+        <div class="modal-block">
+          <h3>Results</h3>
+          <div class="modal-results" id="modal-results"></div>
+        </div>
+        <div class="modal-block">
+          <h3>What I did</h3>
+          <ul id="modal-contributions"></ul>
+        </div>
+        <div class="modal-block">
+          <h3>Artifacts</h3>
+          <ul id="modal-artifacts"></ul>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <template id="industrial-case">
+    <div class="case-study-body">
+      <div class="case-actions"><button class="btn ghost" type="button" data-close-case aria-label="Close project details">Close &times;</button></div>
+      <span class="modal-kicker">Industrial computer vision / Team Leader</span>
+      <h2 id="industrial-case-title">Non-contact Micro-motion Measurement</h2>
+      <p>Led an undergraduate research project exploring deformation monitoring for underground industrial environments. Analysed field imagery using a multi-stage 2D digital image correlation workflow, producing displacement and strain visualisations.</p>
+      <section><h3>Problem and contribution</h3><p>The project investigated small surface movements in high-risk underground environments. I led the project, investigated and integrated the processing algorithms, and contributed to experimental analysis and technical documentation.</p></section>
+      <section><h3>Analysis workflow</h3><p>The workflow covers initial alignment, non-rigid registration, discrete searches for uneven deformation, local DIC, image warping and residual checks, bad-point filtering, and strain calculation.</p><p>Transformation fields and convergence diagnostics were exported as TSV files and visualised in MATLAB. Failed or unconverged results informed adjustments to iterations, window sizes, masks, and binning.</p></section>
+      <section><h3>Registration results</h3><p>Reference images, transformed images, and residual fields support visual checks before displacement analysis.</p><div class="case-gallery"><figure><img src="assets/industrial/report/image3.png" alt="Field image, registered image and residual field" loading="lazy"><figcaption>Registration output on field imagery.</figcaption></figure><figure><img src="assets/industrial/report/image4.png" alt="Registration comparison using field images taken at different positions" loading="lazy"><figcaption>Alignment comparison using images captured from different positions.</figcaption></figure></div></section>
+      <section><h3>Experiments in motion</h3><p>Original animations from the project presentation show the experimental analysis. The tests explored distance and surface texture as factors affecting the observed pixel response.</p><div class="case-gallery">
+        <figure><img src="assets/industrial/image16.GIF" alt="Animated source imagery from the distance experiment" loading="lazy"><figcaption>Distance experiment: source sequence.</figcaption></figure>
+        <figure><img src="assets/industrial/image15.GIF" alt="Animated analysis from the distance experiment" loading="lazy"><figcaption>Distance experiment: analysis sequence.</figcaption></figure>
+        <figure><img src="assets/industrial/image17.GIF" alt="Animated source sequence from the texture experiment" loading="lazy"><figcaption>Texture experiment: source sequence.</figcaption></figure>
+        <figure><img src="assets/industrial/image13.GIF" alt="Animated analysis from the surface texture experiment" loading="lazy"><figcaption>Texture experiment: analysis sequence.</figcaption></figure>
+      </div></section>
+      <section><h3>Project outcomes</h3><h4>Software Copyright Registration</h4><p>The project resulted in registered software for non-contact micro-motion analysis and monitoring in high-risk industrial environments.</p><p>The work also produced an image registration and deformation analysis workflow, experimental visualisations using field imagery, and supporting technical reports.</p><p><strong>Further development:</strong> out-of-plane motion and very small changes remained challenging. Alarm thresholds required further validation at the completion-report stage.</p></section>
+    </div>
+  </template>
+
+  <template id="thesis-case">
+    <div class="case-study-body">
+      <div class="case-actions"><button class="btn ghost" type="button" data-close-case aria-label="Close project details">Close &times;</button></div>
+      <span class="modal-kicker">Undergraduate thesis / 2026</span>
+      <h2 id="thesis-case-title">LiDAR-constrained 3D Gaussian Splatting</h2>
+      <p>Investigated how LiDAR point clouds can provide geometric support for Gaussian scene reconstruction, while multi-view images optimise appearance. Evaluated the approach on PandaSet and DJI industrial inspection imagery.</p>
+      <section><h3>Method and implementation</h3><p>Initialised Gaussian centres from LiDAR points and used point colours and local neighbour distances to set appearance and scale. Geometric anchors constrained centre movement during image-based optimisation.</p><p>For industrial imagery, aligned camera parameters and DJI Terra exterior orientations with the point cloud. Generated ROI masks from projected points to focus supervision on the target equipment.</p><p><strong>Tools:</strong> Python, PyTorch, gsplat, NumPy, Laspy, PyProj, CUDA and WSL2.</p><figure><img style="width:100%;height:auto" src="assets/thesis/image8.jpeg" alt="Thesis pipeline for LiDAR and image preparation, Gaussian initialisation, coordinate alignment and optimisation" loading="lazy"><figcaption>Method overview from the thesis.</figcaption></figure></section>
+      <section><h3>PandaSet reconstruction</h3><div class="metric-row"><div class="metric"><strong>25.296 dB</strong><span>Best reported test PSNR</span></div><div class="metric"><strong>0.0276 m</strong><span>Mean centre drift in the same setting</span></div></div><p>Evaluated sequence 019 using a local 25-frame block with 60 training views and 15 test views. The best reported setting used approximately 600,000 Gaussians with detail supervision and late alpha refinement.</p><figure><img style="width:100%;height:auto" src="assets/thesis/image9.jpeg" alt="Two PandaSet views comparing target images, raw Gaussian renders, display-enhanced images and error maps" loading="lazy"><figcaption>Left to right: target, raw render, display-enhanced render, error map. Display enhancement is post-processing and is excluded from quantitative evaluation.</figcaption></figure></section>
+      <section><h3>Industrial inspection reconstruction</h3><div class="metric-row"><div class="metric"><strong>16.45 dB</strong><span>Best reported test masked PSNR</span></div><div class="metric"><strong>508</strong><span>Valid images organised for the dataset</span></div></div><p>Reconstructed local equipment regions in DJI inspection imagery using calibrated point projections and ROI masks. The best reported masked PSNR used image width 768, mask dilation radius 1, and 1,200 training iterations.</p><figure><img style="width:100%;height:auto;max-height:640px;object-fit:contain" src="assets/thesis/image10.jpeg" alt="Industrial equipment target photographs alongside corresponding ROI Gaussian renders" loading="lazy"><figcaption>Target images and ROI renders. Background suppression is intentional; fine texture and thin structures remain challenging.</figcaption></figure></section>
+      <section><h3>Findings</h3><p>LiDAR initialisation and anchoring improved geometric stability in the reported experiments. On the industrial dataset, projection masks and effective view coverage helped concentrate learning on the equipment rather than the surrounding background.</p><p>PandaSet PSNR and DJI masked PSNR measure different evaluation regions on different datasets and should be read separately. Remaining challenges include dynamic objects, occlusion, pose sensitivity, and blurred fine details.</p></section>
+    </div>
+  </template>
+
+  <footer>
+    <div class="wrap footer-inner"><span>Hao Li &copy; <span id="year"></span></span><span>A few projects. A few places. Always curious.</span><a href="#top">Back to top &uarr;</a></div>
+  </footer>
+
+  <dialog class="photo-viewer" aria-label="Photo album">
+    <div class="photo-viewer-toolbar"><span id="photo-count"></span><button type="button" data-photo-close aria-label="Close photograph" title="Close photograph">&times;</button></div>
+    <img id="photo-full" alt="">
+    <div class="photo-viewer-footer"><button type="button" data-photo-prev aria-label="Previous photograph" title="Previous photograph">&larr;</button><p id="photo-caption"></p><button type="button" data-photo-next aria-label="Next photograph" title="Next photograph">&rarr;</button></div>
+  </dialog>
+
+  <script>
+    document.getElementById("year").textContent = new Date().getFullYear();
+
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add("visible");
+          observer.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.16 });
+
+    document.querySelectorAll(".reveal").forEach((el) => observer.observe(el));
+
+    const projectDetails = {
+      multimodal: {
+        kicker: "Research project",
+        title: "Multimodal Sentiment Analysis with Graph Neural Networks",
+        image: "assets/multimodal-gnn.svg",
+        imageAlt: "Architecture diagram for the multimodal graph neural network pipeline",
+        summary: "A research prototype for image-text sentiment analysis that combines text graph encoding, image graph convolution, cross-modal co-attention, and sentiment-aware aggregation.",
+        results: [["TumEmo Acc", "0.6610"], ["TumEmo Weighted F1", "0.6564"], ["MVSA-M Acc", "0.7181"], ["MVSA-M Weighted F1", "0.6914"]],
+        contributions: [
+          "Designed the project framing around graph-based multimodal representation learning.",
+          "Implemented text and image graph encoders with co-attention fusion logic.",
+          "Led model design, experiment documentation, and manuscript-style technical writing."
+        ],
+        artifacts: [
+          "Architecture diagram prepared for portfolio presentation.",
+          "Benchmark results on TumEmo and MVSA-Multiple.",
+          "Final report and presentation materials from the project folder."
+        ]
+      },
+      "graph-ode": {
+        kicker: "Paper contribution",
+        title: "Physics-informed Riemannian Graph ODE",
+        image: "assets/dic-subsets.png",
+        imageAlt: "Geometric subset deformation diagram used as a graph and motion visual reference",
+        summary: "A theoretical and experimental research contribution around graph ODEs, Riemannian geometry, constrained Ricci flow, and entropy-increasing dynamics.",
+        results: [["Venue target", "AAAI"], ["Role", "Co-author"], ["Focus", "Graph ODE"], ["Area", "Physics-informed ML"]],
+        contributions: [
+          "Reviewed graph ODEs, Riemannian geometry, and physics-informed learning foundations.",
+          "Implemented and debugged core model components and experimental pipeline pieces.",
+          "Contributed to manuscript writing, technical exposition, and revisions."
+        ],
+        artifacts: [
+          "Theory notes and derivation support.",
+          "Experimental implementation and debugging work.",
+          "Paper writing and revision contributions."
+        ]
+      },
+      industrial: {
+        kicker: "Industrial vision system",
+        title: "High-risk Industrial Monitoring Software",
+        image: "assets/industrial-monitoring.png",
+        imageAlt: "Monitoring equipment deployed in an industrial environment",
+        summary: "A non-contact deformation monitoring system based on 2D digital image correlation for high-risk production environments.",
+        results: [["Output", "Registered software"], ["Method", "2D DIC"], ["Signal", "Displacement / strain"], ["Use case", "Early warning"]],
+        contributions: [
+          "Led the student innovation project from system design to deliverables.",
+          "Designed the multi-stage analysis pipeline for full-field displacement and strain estimation.",
+          "Connected pixel-level deformation modelling with threshold-based monitoring logic."
+        ],
+        artifacts: [
+          "Software registration certificate.",
+          "Industrial deployment photo and physical prototype material.",
+          "Project report, design proposal, and presentation files."
+        ]
+      },
+      thesis: {
+        kicker: "Undergraduate thesis",
+        title: "LiDAR-constrained 3D Gaussian Splatting",
+        image: "assets/thesis/image9.jpeg",
+        imageAlt: "PandaSet reference and Gaussian render comparisons",
+        summary: "Combined LiDAR geometry with multi-view image supervision for Gaussian scene reconstruction.",
+        results: [["PandaSet test PSNR", "25.296 dB"], ["DJI test masked PSNR", "16.45 dB"]],
+        contributions: [
+          "Investigated LiDAR initialisation and geometric anchoring.",
+          "Aligned point clouds and camera parameters for ROI supervision.",
+          "Evaluated rendering quality and geometric drift on two datasets."
+        ],
+        artifacts: [
+          "Thesis method overview.",
+          "PandaSet reconstruction comparisons.",
+          "DJI industrial ROI rendering results."
+        ]
+      }
+    };
+
+    const modal = document.getElementById("project-modal");
+    const modalImage = document.getElementById("modal-image");
+    const modalKicker = document.getElementById("modal-kicker");
+    const modalTitle = document.getElementById("modal-title");
+    const modalSummary = document.getElementById("modal-summary");
+    const modalResults = document.getElementById("modal-results");
+    const modalContributions = document.getElementById("modal-contributions");
+    const modalArtifacts = document.getElementById("modal-artifacts");
+    const closeModalButton = modal.querySelector(".modal-close");
+    let lastFocusedProject = null;
+
+    function fillList(container, items) {
+      container.replaceChildren();
+      items.forEach((item) => {
+        const li = document.createElement("li");
+        li.textContent = item;
+        container.appendChild(li);
+      });
+    }
+
+    function fillResults(items) {
+      modalResults.replaceChildren();
+      items.forEach(([label, value]) => {
+        const metric = document.createElement("div");
+        metric.className = "metric";
+        const strong = document.createElement("strong");
+        strong.textContent = value;
+        const span = document.createElement("span");
+        span.textContent = label;
+        metric.append(strong, span);
+        modalResults.appendChild(metric);
+      });
+    }
+
+    function openProject(projectId, sourceElement) {
+      const project = projectDetails[projectId];
+      if (!project) return;
+      lastFocusedProject = sourceElement;
+      const panel = modal.querySelector(".modal-panel");
+      const caseTemplate = { industrial: "industrial-case", thesis: "thesis-case" }[projectId];
+      panel.querySelector(".case-study-body")?.remove();
+      panel.classList.toggle("case-study", Boolean(caseTemplate));
+      panel.setAttribute("aria-labelledby", caseTemplate ? caseTemplate + "-title" : "modal-title");
+      if (caseTemplate) {
+        panel.appendChild(document.getElementById(caseTemplate).content.cloneNode(true));
+        panel.querySelector("[data-close-case]").addEventListener("click", closeProject);
+      }
+      modalImage.src = project.image;
+      modalImage.alt = project.imageAlt;
+      modalKicker.textContent = project.kicker;
+      modalTitle.textContent = project.title;
+      modalSummary.textContent = project.summary;
+      fillResults(project.results);
+      fillList(modalContributions, project.contributions);
+      fillList(modalArtifacts, project.artifacts);
+      modal.classList.add("open");
+      modal.setAttribute("aria-hidden", "false");
+      document.body.classList.add("modal-open");
+      panel.scrollTop = 0;
+      (caseTemplate ? panel.querySelector("[data-close-case]") : closeModalButton).focus();
+    }
+
+    function closeProject() {
+      modal.classList.remove("open");
+      modal.setAttribute("aria-hidden", "true");
+      document.body.classList.remove("modal-open");
+      if (lastFocusedProject) lastFocusedProject.focus();
+    }
+
+    document.querySelectorAll("[data-project]").forEach((card) => {
+      card.addEventListener("click", () => openProject(card.dataset.project, card));
+      if (card.tagName !== "BUTTON") card.addEventListener("keydown", (event) => {
+        if (event.key === "Enter" || event.key === " ") {
+          event.preventDefault();
+          openProject(card.dataset.project, card);
+        }
+      });
+    });
+
+    closeModalButton.addEventListener("click", closeProject);
+    modal.addEventListener("click", (event) => {
+      if (event.target === modal) closeProject();
+    });
+    document.addEventListener("keydown", (event) => {
+      if (event.key === "Escape" && modal.classList.contains("open")) closeProject();
+    });
+  </script>
+</body>
+</html>

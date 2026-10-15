@@ -1,0 +1,93 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 760" role="img" aria-labelledby="title desc">
+  <title id="title">Multimodal graph neural network architecture</title>
+  <desc id="desc">A portfolio diagram showing text and image inputs flowing into graph encoders, co-attention fusion, sentiment-aware aggregation, and prediction.</desc>
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#f7f5ee"/>
+      <stop offset="1" stop-color="#e8f0ec"/>
+    </linearGradient>
+    <linearGradient id="teal" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#19726d"/>
+      <stop offset="1" stop-color="#60a89b"/>
+    </linearGradient>
+    <linearGradient id="rust" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#ca5d2a"/>
+      <stop offset="1" stop-color="#e4a046"/>
+    </linearGradient>
+    <filter id="shadow" x="-20%" y="-20%" width="140%" height="140%">
+      <feDropShadow dx="0" dy="14" stdDeviation="16" flood-color="#15201e" flood-opacity="0.16"/>
+    </filter>
+    <marker id="arrow" markerWidth="10" markerHeight="10" refX="8" refY="3" orient="auto" markerUnits="strokeWidth">
+      <path d="M0,0 L0,6 L9,3 z" fill="#64736f"/>
+    </marker>
+    <style>
+      .label{font:700 28px Inter,Segoe UI,sans-serif;fill:#15201e}
+      .small{font:600 18px Inter,Segoe UI,sans-serif;fill:#5b6864}
+      .tiny{font:700 15px Inter,Segoe UI,sans-serif;fill:#fffdfa}
+      .box{fill:#fffdfa;stroke:#d8ded8;stroke-width:2;rx:22;filter:url(#shadow)}
+      .line{stroke:#64736f;stroke-width:4;fill:none;marker-end:url(#arrow)}
+      .node{fill:#fffdfa;stroke-width:4}
+    </style>
+  </defs>
+  <rect width="1200" height="760" fill="url(#bg)"/>
+  <text x="70" y="78" class="label">Context-aware multimodal sentiment pipeline</text>
+  <text x="70" y="112" class="small">Text graph + image graph representations fused with cross-modal co-attention</text>
+
+  <rect x="72" y="178" width="250" height="176" class="box"/>
+  <text x="104" y="226" class="label">Text input</text>
+  <text x="104" y="264" class="small">Tokens, context windows</text>
+  <text x="104" y="294" class="small">GloVe embeddings</text>
+  <circle cx="130" cy="326" r="10" fill="#19726d"/>
+  <circle cx="174" cy="326" r="10" fill="#19726d"/>
+  <circle cx="218" cy="326" r="10" fill="#19726d"/>
+  <path d="M130 326H174H218" stroke="#19726d" stroke-width="5" fill="none"/>
+
+  <rect x="72" y="414" width="250" height="176" class="box"/>
+  <text x="104" y="462" class="label">Image input</text>
+  <text x="104" y="500" class="small">Visual regions</text>
+  <text x="104" y="530" class="small">Object co-occurrence</text>
+  <rect x="112" y="548" width="40" height="28" rx="7" fill="#ca5d2a"/>
+  <rect x="166" y="548" width="40" height="28" rx="7" fill="#e4a046"/>
+  <rect x="220" y="548" width="40" height="28" rx="7" fill="#19726d"/>
+
+  <rect x="424" y="162" width="260" height="204" class="box"/>
+  <text x="456" y="214" class="label">Text GNN</text>
+  <text x="456" y="252" class="small">PMI weighted edges</text>
+  <text x="456" y="282" class="small">Message passing</text>
+  <circle class="node" cx="500" cy="322" r="18" stroke="#19726d"/>
+  <circle class="node" cx="558" cy="302" r="18" stroke="#19726d"/>
+  <circle class="node" cx="614" cy="334" r="18" stroke="#19726d"/>
+  <path d="M516 316L542 307M574 311L598 325M518 328L596 334" stroke="#19726d" stroke-width="4"/>
+
+  <rect x="424" y="400" width="260" height="204" class="box"/>
+  <text x="456" y="452" class="label">Image GCN</text>
+  <text x="456" y="490" class="small">Region graph</text>
+  <text x="456" y="520" class="small">Weighted co-occurrence</text>
+  <circle class="node" cx="506" cy="556" r="18" stroke="#ca5d2a"/>
+  <circle class="node" cx="568" cy="538" r="18" stroke="#ca5d2a"/>
+  <circle class="node" cx="622" cy="574" r="18" stroke="#ca5d2a"/>
+  <path d="M523 551L551 543M584 548L606 564M524 562L604 574" stroke="#ca5d2a" stroke-width="4"/>
+
+  <rect x="778" y="244" width="284" height="230" class="box"/>
+  <text x="814" y="298" class="label">Co-attention</text>
+  <text x="814" y="336" class="small">Affinity matrix</text>
+  <text x="814" y="366" class="small">Cross-modal alignment</text>
+  <g transform="translate(822 394)">
+    <rect width="150" height="48" rx="12" fill="url(#teal)"/>
+    <rect x="20" y="13" width="110" height="8" rx="4" fill="#fffdfa" opacity="0.74"/>
+    <rect x="20" y="29" width="70" height="8" rx="4" fill="#fffdfa" opacity="0.52"/>
+  </g>
+
+  <rect x="778" y="548" width="284" height="110" rx="22" fill="url(#rust)" filter="url(#shadow)"/>
+  <text x="814" y="592" class="label" fill="#fffdfa">Prediction</text>
+  <text x="814" y="626" class="tiny">Sentiment class + confidence</text>
+
+  <path class="line" d="M322 266C364 266 374 264 424 264"/>
+  <path class="line" d="M322 502C364 502 374 502 424 502"/>
+  <path class="line" d="M684 264C726 286 742 318 778 336"/>
+  <path class="line" d="M684 502C730 482 748 430 778 390"/>
+  <path class="line" d="M920 474V548"/>
+
+  <rect x="72" y="660" width="990" height="42" rx="21" fill="#15201e" opacity="0.9"/>
+  <text x="104" y="688" class="tiny">Portfolio framing: reproduced baselines, implemented graph encoders and fusion logic, evaluated on TumEmo and MVSA-Multiple.</text>
+</svg>
