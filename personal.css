@@ -57,6 +57,14 @@ a:focus-visible, button:focus-visible { outline: 2px solid var(--accent); outlin
 .project-card:hover, .project-card:focus-visible { transform: translateY(-5px); box-shadow: none; border-color: transparent; }
 .project-card > img { height: 218px; border: 1px solid var(--line); border-radius: 3px; object-fit: contain; background: #f0f3ee; transition: filter 250ms; }
 .project-card:first-child > img { object-fit: cover; object-position: center 36%; }
+.project-cover { height: 218px; width: 100%; overflow: hidden; border: 1px solid var(--line); border-radius: 3px; background: var(--field); }
+.industrial-cover { display: grid; grid-template-columns: 58% 42%; gap: 3px; }
+.industrial-cover > div { min-width: 0; overflow: hidden; }
+.industrial-cover img { height: 100%; width: 100%; object-fit: cover; border: 0; }
+.industrial-cover .cover-scene img { object-position: center; }
+.industrial-cover .cover-device img { width: 160%; max-width: none; object-position: left top; }
+.reconstruction-cover { position: relative; }
+.reconstruction-cover img { position: absolute; left: 0; top: -7%; width: 200%; max-width: none; height: auto; border: 0; }
 .project-card .card-body { padding: 22px 0 0; }
 .project-card h3 { font-size: 19px; line-height: 1.4; font-weight: 600; }
 .project-card p { font-size: 14px; line-height: 1.7; margin-bottom: 18px; }
@@ -164,6 +172,7 @@ a:focus-visible, button:focus-visible { outline: 2px solid var(--accent); outlin
   .section-head h2, .contact h2 { font-size: 36px; }
   .project-grid { grid-template-columns: 1fr; gap: 35px; }
   .project-card > img { height: 230px; }
+  .project-cover { height: 230px; }
   .entry { grid-template-columns: 1fr; gap: 12px; }
   .skills { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 18px; }
   #skills { padding: 42px 0; }

@@ -860,7 +860,7 @@
         <div class="skill-types">
           <div class="skill-type reveal">
             <h3>Programming</h3>
-            <p>Python, C, C++, Java, HTML, algorithm implementation, experiment pipelines.</p>
+            <p>Python, C, C++, Java, HTML</p>
           </div>
           <div class="skill-type reveal">
             <h3>Machine Learning</h3>
@@ -887,7 +887,10 @@
 
         <div class="project-grid">
           <article class="project-card reveal" role="button" tabindex="0" data-project="industrial">
-            <img src="assets/industrial-monitoring.png" alt="Industrial monitoring prototype on site" />
+            <div class="project-cover industrial-cover" aria-label="Underground cavern and monitoring device">
+              <div class="cover-scene"><img src="assets/industrial/report/image8.jpeg" alt="Rock cavern roof and industrial support structures"></div>
+              <div class="cover-device"><img src="assets/industrial/report/image9.jpeg" alt="Monitoring camera and its mounting equipment"></div>
+            </div>
             <div class="card-body">
               <h3>Non-contact Deformation Monitoring</h3>
               <p>Explored how camera images can reveal small surface movements in tunnels and other industrial environments.</p>
@@ -897,7 +900,9 @@
           </article>
 
           <article class="project-card reveal" role="button" tabindex="0" data-project="thesis">
-            <img src="assets/thesis/image9.jpeg" alt="PandaSet reference images and Gaussian splatting reconstruction comparisons" />
+            <div class="project-cover reconstruction-cover">
+              <img src="assets/thesis/image10.jpeg" alt="Industrial equipment photographed from above for the 3D reconstruction project">
+            </div>
             <div class="card-body">
               <h3>LiDAR-guided 3D Reconstruction</h3>
               <p>Combined laser scans and photographs to reconstruct industrial scenes in 3D, using point clouds to guide the geometry.</p>
@@ -1026,6 +1031,7 @@
         <div class="modal-block">
           <h3>Results</h3>
           <div class="modal-results" id="modal-results"></div>
+          <p class="modal-summary" id="modal-evaluation" hidden></p>
         </div>
         <div class="modal-block">
           <h3>What I did</h3>
@@ -1064,10 +1070,10 @@
       <span class="modal-kicker">Undergraduate thesis / 2026</span>
       <h2 id="thesis-case-title">LiDAR-constrained 3D Gaussian Splatting</h2>
       <p>Investigated how LiDAR point clouds can provide geometric support for Gaussian scene reconstruction, while multi-view images optimise appearance. Evaluated the approach on PandaSet and DJI industrial inspection imagery.</p>
-      <section><h3>Method and implementation</h3><p>Initialised Gaussian centres from LiDAR points and used point colours and local neighbour distances to set appearance and scale. Geometric anchors constrained centre movement during image-based optimisation.</p><p>For industrial imagery, aligned camera parameters and DJI Terra exterior orientations with the point cloud. Generated ROI masks from projected points to focus supervision on the target equipment.</p><p><strong>Tools:</strong> Python, PyTorch, gsplat, NumPy, Laspy, PyProj, CUDA and WSL2.</p><figure><img style="width:100%;height:auto" src="assets/thesis/image8.jpeg" alt="Thesis pipeline for LiDAR and image preparation, Gaussian initialisation, coordinate alignment and optimisation" loading="lazy"><figcaption>Method overview from the thesis.</figcaption></figure></section>
+      <section><h3>Method and implementation</h3><p>Initialised Gaussian centres from LiDAR points and used point colours and local neighbour distances to set appearance and scale. Geometric anchors constrained centre movement during image-based optimisation.</p><p>For industrial imagery, aligned camera parameters and DJI Terra exterior orientations with the point cloud. Generated ROI masks from projected points to focus supervision on the target equipment.</p><p><strong>Tools:</strong> Python, PyTorch, gsplat, NumPy, Laspy, PyProj, CUDA and WSL2.</p><figure><img style="width:100%;height:auto" src="assets/thesis/pipeline-en.png" alt="English workflow showing input data, preprocessing, LiDAR-guided Gaussian initialisation, image alignment, optimisation and reconstruction output" loading="lazy"><figcaption>LiDAR-guided initialisation, image alignment and Gaussian optimisation.</figcaption></figure></section>
       <section><h3>PandaSet reconstruction</h3><div class="metric-row"><div class="metric"><strong>25.296 dB</strong><span>Best reported test PSNR</span></div><div class="metric"><strong>0.0276 m</strong><span>Mean centre drift in the same setting</span></div></div><p>Evaluated sequence 019 using a local 25-frame block with 60 training views and 15 test views. The best reported setting used approximately 600,000 Gaussians with detail supervision and late alpha refinement.</p><figure><img style="width:100%;height:auto" src="assets/thesis/image9.jpeg" alt="Two PandaSet views comparing target images, raw Gaussian renders, display-enhanced images and error maps" loading="lazy"><figcaption>Left to right: target, raw render, display-enhanced render, error map. Display enhancement is post-processing and is excluded from quantitative evaluation.</figcaption></figure></section>
-      <section><h3>Industrial inspection reconstruction</h3><div class="metric-row"><div class="metric"><strong>16.45 dB</strong><span>Best reported test masked PSNR</span></div><div class="metric"><strong>508</strong><span>Valid images organised for the dataset</span></div></div><p>Reconstructed local equipment regions in DJI inspection imagery using calibrated point projections and ROI masks. The best reported masked PSNR used image width 768, mask dilation radius 1, and 1,200 training iterations.</p><figure><img style="width:100%;height:auto;max-height:640px;object-fit:contain" src="assets/thesis/image10.jpeg" alt="Industrial equipment target photographs alongside corresponding ROI Gaussian renders" loading="lazy"><figcaption>Target images and ROI renders. Background suppression is intentional; fine texture and thin structures remain challenging.</figcaption></figure></section>
-      <section><h3>Findings</h3><p>LiDAR initialisation and anchoring improved geometric stability in the reported experiments. On the industrial dataset, projection masks and effective view coverage helped concentrate learning on the equipment rather than the surrounding background.</p><p>PandaSet PSNR and DJI masked PSNR measure different evaluation regions on different datasets and should be read separately. Remaining challenges include dynamic objects, occlusion, pose sensitivity, and blurred fine details.</p></section>
+      <section><h3>Industrial inspection feasibility study</h3><p>Prepared 508 valid DJI inspection images and explored local equipment reconstruction using calibrated point projections and ROI masks. This was an exploratory study of alignment and target-region supervision, not a demonstration of high-fidelity industrial reconstruction.</p><figure><img style="width:100%;height:auto;max-height:640px;object-fit:contain" src="assets/thesis/image10.jpeg" alt="Industrial equipment target photographs alongside corresponding ROI Gaussian renders" loading="lazy"><figcaption>Target images and ROI renders. Background suppression is intentional; fine texture and thin structures remain challenging.</figcaption></figure></section>
+      <section><h3>Findings and limitations</h3><p>LiDAR initialisation and anchoring improved geometric stability in the reported experiments. On the industrial dataset, projection masks and effective view coverage helped concentrate learning on the equipment rather than the surrounding background.</p><p>The PandaSet metrics describe a local sequence experiment, not a full-dataset benchmark or evidence of state-of-the-art performance. Industrial ROI experiments used different masks and resolutions, so their scores do not establish a controlled improvement. Remaining challenges include dynamic objects, occlusion, pose sensitivity, and blurred fine details.</p></section>
     </div>
   </template>
 
@@ -1102,7 +1108,8 @@
         image: "assets/multimodal-gnn.svg",
         imageAlt: "Architecture diagram for the multimodal graph neural network pipeline",
         summary: "A research prototype for image-text sentiment analysis that combines text graph encoding, image graph convolution, cross-modal co-attention, and sentiment-aware aggregation.",
-        results: [["TumEmo Acc", "0.6610"], ["TumEmo Weighted F1", "0.6564"], ["MVSA-M Acc", "0.7181"], ["MVSA-M Weighted F1", "0.6914"]],
+        results: [["TumEmo accuracy", "66.10%"], ["TumEmo weighted F1", "0.6564"], ["MVSA-M accuracy", "71.81%"], ["MVSA-M weighted F1", "0.6914"]],
+        evaluation: "Reported within a 10-epoch training budget. The project report lists MVAN at 65.53% accuracy / 0.6543 weighted F1 on TumEmo and 71.83% / 0.7038 on MVSA-M. Our TumEmo scores were slightly higher; MVSA-M accuracy was nearly unchanged and weighted F1 was lower. These limited experiments do not establish general superiority, and the full evaluation protocol has not been independently verified.",
         contributions: [
           "Designed the project framing around graph-based multimodal representation learning.",
           "Implemented text and image graph encoders with co-attention fusion logic.",
@@ -1156,7 +1163,7 @@
         image: "assets/thesis/image9.jpeg",
         imageAlt: "PandaSet reference and Gaussian render comparisons",
         summary: "Combined LiDAR geometry with multi-view image supervision for Gaussian scene reconstruction.",
-        results: [["PandaSet test PSNR", "25.296 dB"], ["DJI test masked PSNR", "16.45 dB"]],
+        results: [["PandaSet local test PSNR", "25.296 dB"]],
         contributions: [
           "Investigated LiDAR initialisation and geometric anchoring.",
           "Aligned point clouds and camera parameters for ROI supervision.",
@@ -1176,6 +1183,7 @@
     const modalTitle = document.getElementById("modal-title");
     const modalSummary = document.getElementById("modal-summary");
     const modalResults = document.getElementById("modal-results");
+    const modalEvaluation = document.getElementById("modal-evaluation");
     const modalContributions = document.getElementById("modal-contributions");
     const modalArtifacts = document.getElementById("modal-artifacts");
     const closeModalButton = modal.querySelector(".modal-close");
@@ -1223,6 +1231,8 @@
       modalTitle.textContent = project.title;
       modalSummary.textContent = project.summary;
       fillResults(project.results);
+      modalEvaluation.textContent = project.evaluation || "";
+      modalEvaluation.hidden = !project.evaluation;
       fillList(modalContributions, project.contributions);
       fillList(modalArtifacts, project.artifacts);
       modal.classList.add("open");
